@@ -1,8 +1,21 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-
+import { useEffect } from 'react'
+import client from '../service/apollo-client'
+import { gql, useQuery } from "@apollo/client";
+const query = gql`{
+  plans {
+    name
+    id
+    pricePerMeal
+    itemImage
+  }
+}
+`
 export default function Home() {
+  const {data, loading, error} = useQuery(query)
+
   return (
     <div className={`leading-normal tracking-normal text-white  h-screen ${styles.gradient}`} style={{'font-family': "'Source Sans Pro', sans-serif;"}}>
       <nav id="header" className="fixed w-full z-30 top-0 text-white">
@@ -29,9 +42,6 @@ export default function Home() {
               <a>Subscribe</a>
             </Link>
           </button>
-        </div>
-        <div className="w-full md:w-3/5 py-6 text-center">
-          {/* <img className="w-full md:w-4/5 z-50" src="hero.png" /> */}
         </div>
       </div>
     </div>

@@ -2,14 +2,9 @@ import cookieCutter from 'cookie-cutter'
 import { useRouter } from 'next/router'
 import cookie from 'cookie'
 import { useReducer, useState } from 'react'
+import { Section } from './../components/Section'
+import { DeliveryForm } from './../components/DeliveryForm'
 
-const Section = (props) => (
-  <section className="bg-white py-8 flex">
-    <div className="container mx-auto flex items-center flex-wrap pt-4 pb-12 self-center">
-      {props.children}
-    </div>
-  </section>
-)
 const DeliveryDay = ({availableDays, onClick, selectedIndex}) => (
   <Section>
     <div className='flex flex-col'>
@@ -32,36 +27,16 @@ const DeliveryDay = ({availableDays, onClick, selectedIndex}) => (
 )
 
 
-const deliveryForm = [
-  { id: 'fistName', label: 'First Name' },
-  { id: 'lastName', label: 'Last Name' },
-  { id: 'email', label: 'Email' },
-  { id: 'address', label: 'Address' },
-  { id: 'postal', label: 'Postal code', type: 'number' }
 
-]
 
-const DeliveryAddress = (props) => {
-  return (
-    <Section>
-      <div className='flex flex-col'>
-        <h2 className='text-2xl'>Add delivery address</h2>
-        {deliveryForm.map(({id, label, type}, index) => (
-          <div className='flex flex-col mt-2 mb-2'>
-            <label htmlFor={label}>{label}</label>
-            <input
-              onChange={(e) => props.onChange({field: id, value: e.target.value})}
-              className='shadow-sm'
-              type={type || 'text'}
-              id={id}
-              name={label}
-            />
-          </div>
-        ))}
-      </div>
-    </Section>
-  )
-}
+const DeliveryAddress = (props) => (
+  <Section>
+    <div className='flex flex-col'>
+      <h2 className='text-2xl'>Add delivery address</h2>
+      <DeliveryForm onChange={props.onChange} />
+    </div>
+  </Section>
+)
 
 const formReducer = (state = {}, action) => {
   switch(action.type) {
@@ -79,8 +54,6 @@ function PlanDetails (props) {
   const router = useRouter()
   const [dayIndex, setDayIndex] = useState(null)
   const [data, dispatch] = useReducer(formReducer, {})
-
-  console.log(data)
 
   const onDeliveryAddressChange = ({field, value}) => {
     dispatch({ type: 'ON_CHANGE', field, value });
@@ -122,7 +95,6 @@ const oneDay = 86400000
 
 export async function getServerSideProps({req}) {
   const cookies = cookie.parse(req.headers.cookie)
-  console.log(cookies)
 
   return {
     props: {
