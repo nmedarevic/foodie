@@ -1,0 +1,29 @@
+type UserPlan {
+  planId: String
+  mealsPerWeek: Int
+  firstDeliveryDay: String
+}
+
+type UserAddress {
+  postalCode: Int
+  address: String
+}
+
+type UserData {
+  plan: UserPlan
+  firstName: String
+  lastName: String
+  email: String
+  address: UserAddress
+}
+
+type User {
+  id: String
+  data: UserData
+  password: String
+}
+
+type Query {
+  users: [User]
+  login(email: String, password: String):User
+}

@@ -1,0 +1,29 @@
+type Plan {
+  name: String
+  id: Int
+  pricePerMeal: Int
+  itemImage: String
+}
+
+type NewUserData {
+  response: User!
+}
+
+input SubmitPlanInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  address: String!
+  postal: Int!
+  planId: Int!
+  mealsPerWeek: Int!
+  firstDeliveryDay: String!
+}
+
+type Query {
+  plans: [Plan]
+}
+
+type Mutation {
+  submitPlan(plan: SubmitPlanInput): NewUserData
+}
