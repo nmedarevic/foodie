@@ -25,5 +25,4 @@ type User {
 
 type Query {
   users: [User]
-  login(email: String, password: String):User
 }

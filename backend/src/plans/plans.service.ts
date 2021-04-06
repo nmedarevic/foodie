@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { Plan } from './../graphql';
+import { Injectable } from '@nestjs/common'
+import { Plan } from './../graphql'
 
 const availablePlans: Plan[] = [
   {
@@ -16,17 +16,17 @@ const availablePlans: Plan[] = [
     itemImage:
       'https://images.unsplash.com/photo-1608634070674-2db08b533d3a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80',
   },
-];
+]
 
 @Injectable()
 export class PlansService {
-  private readonly plans: Array<Plan> = availablePlans;
+  private readonly plans: Array<Plan> = availablePlans
 
   findAll(): Plan[] {
-    return this.plans;
+    return this.plans
   }
 
   findById(id: number): Plan {
-    return this.plans.find(({ id: planId }) => planId === id);
+    return this.plans.find(({ id: planId }) => planId === id)
   }
 }
