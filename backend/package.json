@@ -26,13 +26,9 @@
     "apollo-server-express": "^2.22.2",
     "graphql": "^15.5.0",
     "graphql-tools": "^7.0.4",
-    "mysql2": "^2.2.5",
-    "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.6",
-    "sequelize": "^6.6.2",
-    "sequelize-typescript": "^2.1.0",
     "uuidv4": "^6.2.7"
   },
   "devDependencies": {
