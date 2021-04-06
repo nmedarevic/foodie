@@ -1,6 +1,6 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { PlansService } from './plans.service'
-import { SubmitPlanInput } from './../graphql'
+import { SubmitPlanInput, UserPlan } from './../graphql'
 import { UsersService } from 'src/users/users.service'
 
 @Resolver('Plan')
@@ -17,10 +17,19 @@ export class PlansResolver {
 
   @Mutation('submitPlan')
   async submitPlan(@Args('plan') plan: SubmitPlanInput) {
-    const user = this.usersService.save(plan)
+    const desiredPlan = this.plansService.findById(plan.plan.planId)
+    const weeklyTotal = desiredPlan.pricePerMeal * plan.plan.mealsPerWeek
+
+    const userPlan: UserPlan = {
+      planId: plan.plan.planId,
+      weeklyTotal,
+      mealsPerWeek: plan.plan.mealsPerWeek,
+      firstDeliveryDay: plan.plan.firstDeliveryDay,
+    }
+    const newUser = this.usersService.save(plan.user, userPlan)
 
     return {
-      response: user,
+      response: newUser,
     }
   }
 }

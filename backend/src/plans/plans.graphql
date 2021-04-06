@@ -9,15 +9,27 @@ type NewUserData {
   response: User
 }
 
-input SubmitPlanInput {
+input AddressInput {
+  address: String!
+  postal: Int!
+}
+
+input UserInput {
   firstName: String!
   lastName: String!
   email: String!
-  address: String!
-  postal: Int!
+  address: AddressInput
+}
+
+input PlanInput {
   planId: Int!
   mealsPerWeek: Int!
   firstDeliveryDay: String!
+}
+
+input SubmitPlanInput {
+  user: UserInput
+  plan: PlanInput
 }
 
 type Query {

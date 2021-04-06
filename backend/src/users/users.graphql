@@ -1,7 +1,8 @@
 type UserPlan {
-  planId: String
+  planId: Int
   mealsPerWeek: Int
   firstDeliveryDay: String
+  weeklyTotal: Float
 }
 
 type UserAddress {

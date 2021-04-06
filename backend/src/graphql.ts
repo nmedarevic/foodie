@@ -7,15 +7,27 @@
 
 /* tslint:disable */
 /* eslint-disable */
-export class SubmitPlanInput {
+export class AddressInput {
+    address: string;
+    postal: number;
+}
+
+export class UserInput {
     firstName: string;
     lastName: string;
     email: string;
-    address: string;
-    postal: number;
+    address?: AddressInput;
+}
+
+export class PlanInput {
     planId: number;
     mealsPerWeek: number;
     firstDeliveryDay: string;
+}
+
+export class SubmitPlanInput {
+    user?: UserInput;
+    plan?: PlanInput;
 }
 
 export class Plan {
@@ -40,9 +52,10 @@ export abstract class IMutation {
 }
 
 export class UserPlan {
-    planId?: string;
+    planId?: number;
     mealsPerWeek?: number;
     firstDeliveryDay?: string;
+    weeklyTotal?: number;
 }
 
 export class UserAddress {
