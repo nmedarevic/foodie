@@ -1,17 +1,8 @@
 import { Injectable } from '@nestjs/common'
-import {
-  SubmitPlanInput,
-  User,
-  UserAddress,
-  UserData,
-  UserInput,
-  UserPlan,
-} from '../graphql'
+import { User, UserAddress, UserData, UserInput, UserPlan } from '../graphql'
 import { uuid } from 'uuidv4'
 
-class SaveUser extends SubmitPlanInput {
-  weeklyTotal: number
-}
+@Injectable()
 @Injectable()
 export class UsersService {
   private users: Array<User> = []

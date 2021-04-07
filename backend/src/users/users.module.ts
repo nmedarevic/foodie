@@ -9,5 +9,6 @@ import { UsersService } from './users.service'
     UsersResolver,
     // PlansService
   ],
+  exports: [UsersService],
 })
 export class UsersModule {}

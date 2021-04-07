@@ -1,9 +1,11 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { PlansService } from './plans.service'
 import { SubmitPlanInput, UserPlan } from './../graphql'
-import { UsersService } from 'src/users/users.service'
+import { UsersService } from './../users/users.service'
+import { Injectable } from '@nestjs/common'
 
 @Resolver('Plan')
+@Injectable()
 export class PlansResolver {
   constructor(
     private readonly plansService: PlansService,
