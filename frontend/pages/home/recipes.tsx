@@ -1,31 +1,26 @@
 import cookie from 'cookie'
-import cookieCutter from 'cookie-cutter'
-import {Section} from '../components/Common/Section'
-import { SumaryProps, SummaryItem } from '../components/SelectPlan/SummaryItem'
-import { getPlans, submitPlan } from '../service/planService'
-import { getSummary } from '../utils/util'
-import {SubmitPlanInput} from '../types/Summary'
-import { useRouter } from 'next/router'
+import {Section} from '../../components/Common/Section'
+import { Recipe } from '../../components/Home/Recipe'
+import { getRecipes } from '../../service/recipesService'
+import styled from 'styled-components'
+
+const Title = styled.div`
+  width: 100%;
+  height: 5%;
+  font-size: 30px;
+  text-align: center;
+`
 
 function Recipes (props: any) {
-  const router = useRouter()
-
   return (
     <div className="w-screen h-screen">
+      <Title>Available recipes</Title>
       <Section className='space-y-4'>
         {
-          Object.keys(props.summary).map((key) => (
-            <SummaryItem itemKey={key} item={props.summary[key]} />
+          props.recipes.map(({name, text, image}: any) => (
+            <Recipe key={name} name={name} text={text} image={image} />
           ))
         }
-      </Section>
-      <Section>
-        <button
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-          onClick={onContinue}
-        >
-          Continue
-        </button>
       </Section>
     </div>
   )
@@ -34,14 +29,11 @@ function Recipes (props: any) {
 export default Recipes
 
 export async function getServerSideProps({req}) {
-  const plans = await getPlans()
-  const parsedCookies = cookie.parse(req.headers.cookie)
-  const summary = getSummary(parsedCookies, plans)
+  const recipes = await getRecipes(cookie.parse(req.headers.cookie))
 
   return {
     props: {
-      summary,
-      data: parsedCookies
+      recipes
     }
   }
 }

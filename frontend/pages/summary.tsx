@@ -33,7 +33,7 @@ function Summary (props: SumaryProps) {
     if (token) {
       cookieCutter.set('token', token)
 
-      router.push('plan-details')
+      router.push('home/recipes')
     }
   }
 
@@ -62,9 +62,10 @@ export default Summary
 
 export async function getServerSideProps({req}) {
   const plans = await getPlans()
+  console.log(plans)
   const parsedCookies = cookie.parse(req.headers.cookie)
   const summary = getSummary(parsedCookies, plans)
-
+  console.log(summary)
   return {
     props: {
       summary,

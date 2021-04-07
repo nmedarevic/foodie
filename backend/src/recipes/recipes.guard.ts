@@ -8,9 +8,10 @@ export class RecipesGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
     const ctx = GqlExecutionContext.create(context)
     const request = ctx.getContext().request
-    const token = request.cookies.token
+    const authorization = request.headers.authorization
 
-    if (token) {
+    if (authorization) {
+      const token = authorization.replace('Bearer', '')
       const { email } = verify(token, secret)
 
       return !!email

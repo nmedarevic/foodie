@@ -13,6 +13,10 @@ export const summaryData = {
 export const getSummary = (cookies: any, availablePlans: [Plan]) => Object.keys(cookies).reduce((acc, key) => {
   const item = cookies[key]
 
+  if (key === 'token') {
+    return acc
+  }
+
   if (key === 'planId') {
     const plan = availablePlans.find((p) => p.id === Number(item))
     const mealsPerWeek = Number(cookies.mealsPerWeek)
