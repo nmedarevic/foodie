@@ -1,0 +1,10 @@
+type Recipe {
+  id: String
+  name: String
+  text: String
+  image: String
+}
+
+type Query {
+  recipes: [Recipe]
+}

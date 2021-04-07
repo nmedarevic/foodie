@@ -2,7 +2,7 @@ import cookieCutter from 'cookie-cutter'
 import cookie from 'cookie'
 import { useRouter } from 'next/router'
 import { useReducer, useState } from 'react'
-import { Section } from './../components/Section'
+import { Section } from '../components/Common/Section'
 import { DeliveryAddress } from './../components/DeliveryAddress'
 import { DeliveryDay } from './../components/DeliveryDay'
 

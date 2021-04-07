@@ -1,22 +1,8 @@
 import { Injectable } from '@nestjs/common'
 import { User, UserAddress, UserData, UserInput, UserPlan } from '../graphql'
 import { uuid } from 'uuidv4'
-
-const hashCode = function (input: string): string {
-  let hash = 0,
-    i,
-    chr
-
-  if (input.length === 0) return hash.toString()
-
-  for (i = 0; i < input.length; i++) {
-    chr = this.charCodeAt(i)
-    hash = (hash << 5) - hash + chr
-    hash |= 0
-  }
-
-  return hash.toString()
-}
+import { sign } from 'jsonwebtoken'
+import { secret } from '../secret'
 
 export class StoredUser extends User {
   password: string
@@ -59,6 +45,7 @@ export class UsersService {
     const newUser = <StoredUser>{
       id: uuid(),
       email,
+      salt: Date.now(),
       password: '12345',
       data: userData,
     }
@@ -79,8 +66,16 @@ export class UsersService {
   }
 
   getUserWithToken(user: StoredUser): User {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password, ...restOfTheUser } = user
+    const token = sign(
+      {
+        email: restOfTheUser,
+      },
+      secret,
+      { expiresIn: '24h' }
+    )
 
-    return <User>{ ...restOfTheUser, token: hashCode(password) }
+    return <User>{ ...restOfTheUser, token }
   }
 }

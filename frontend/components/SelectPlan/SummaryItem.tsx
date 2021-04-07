@@ -6,18 +6,19 @@ export type SummaryData = {
   [key:string]: SummaryItemType
 }
 export type SumaryProps = {
-  summary: SummaryData
+  summary: SummaryData,
+  data: any
 }
 
 export type SummaryItemProps = {
-  key: string;
+  itemKey: string;
   item: SummaryItemType
 }
 
-export const SummaryItem = ({key, item}: SummaryItemProps) => (
-  <div key={key} className='block'>
-    <span key={`${key}-key`}>{item.label}</span>
-    <span key={`${key}:`}>{':   '}</span>
-    <span key={`${key}-value`}>{item.value}</span>
+export const SummaryItem = ({itemKey, item}: SummaryItemProps) => (
+  <div key={itemKey} className='block'>
+    <span key={`${itemKey}-key`}>{item.label}</span>
+    <span key={`${itemKey}:`}>{':   '}</span>
+    <span key={`${itemKey}-value`}>{item.value}</span>
   </div>
 )

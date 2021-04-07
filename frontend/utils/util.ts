@@ -1,7 +1,7 @@
 import { Plan } from "../types/Plan"
 
 export const summaryData = {
-  fistName: "First Name",
+  firstName: "First Name",
   lastName: "Last Name",
   email: "Email",
   address: "Address",

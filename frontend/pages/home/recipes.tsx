@@ -7,35 +7,8 @@ import { getSummary } from '../utils/util'
 import {SubmitPlanInput} from '../types/Summary'
 import { useRouter } from 'next/router'
 
-function Summary (props: SumaryProps) {
+function Recipes (props: any) {
   const router = useRouter()
-
-  const onContinue = async () => {
-    const {data} = props
-    const params: SubmitPlanInput = {
-      user: {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email,
-        address: {
-          address: data.address,
-          postal: data.postal
-        }
-      },
-      plan: {
-        planId: parseInt(data.planId),
-        mealsPerWeek: parseInt(data.mealsPerWeek),
-        firstDeliveryDay: data.firstDeliveryDay
-      }
-    }
-    const token = await submitPlan(params)
-
-    if (token) {
-      cookieCutter.set('token', token)
-
-      router.push('plan-details')
-    }
-  }
 
   return (
     <div className="w-screen h-screen">
@@ -58,7 +31,7 @@ function Summary (props: SumaryProps) {
   )
 }
 
-export default Summary
+export default Recipes
 
 export async function getServerSideProps({req}) {
   const plans = await getPlans()

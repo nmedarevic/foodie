@@ -44,6 +44,8 @@ export class NewUserData {
 export abstract class IQuery {
     abstract plans(): Plan[] | Promise<Plan[]>;
 
+    abstract recipes(): Recipe[] | Promise<Recipe[]>;
+
     abstract users(): User[] | Promise<User[]>;
 
     abstract login(email?: string, password?: string): User | Promise<User>;
@@ -51,6 +53,13 @@ export abstract class IQuery {
 
 export abstract class IMutation {
     abstract submitPlan(plan?: SubmitPlanInput): NewUserData | Promise<NewUserData>;
+}
+
+export class Recipe {
+    id?: string;
+    name?: string;
+    text?: string;
+    image?: string;
 }
 
 export class UserPlan {

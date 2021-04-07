@@ -1,4 +1,4 @@
-import { Section } from "./Section";
+import { Section } from "./Common/Section";
 
 export const DeliveryDay = ({availableDays, onClick, selectedIndex}) => (
   <Section>
