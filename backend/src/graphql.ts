@@ -45,6 +45,8 @@ export abstract class IQuery {
     abstract plans(): Plan[] | Promise<Plan[]>;
 
     abstract users(): User[] | Promise<User[]>;
+
+    abstract login(email?: string, password?: string): User | Promise<User>;
 }
 
 export abstract class IMutation {
@@ -67,12 +69,12 @@ export class UserData {
     plan?: UserPlan;
     firstName?: string;
     lastName?: string;
-    email?: string;
     address?: UserAddress;
 }
 
 export class User {
     id?: string;
+    email?: string;
     data?: UserData;
-    password?: string;
+    token?: string;
 }

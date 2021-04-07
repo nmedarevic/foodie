@@ -28,7 +28,8 @@ export class PlansResolver {
       mealsPerWeek: plan.plan.mealsPerWeek,
       firstDeliveryDay: plan.plan.firstDeliveryDay,
     }
-    const newUser = this.usersService.save(plan.user, userPlan)
+    const savedUser = this.usersService.save(plan.user, userPlan)
+    const newUser = this.usersService.getUserWithToken(savedUser)
 
     return {
       response: newUser,

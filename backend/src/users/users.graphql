@@ -14,16 +14,17 @@ type UserData {
   plan: UserPlan
   firstName: String
   lastName: String
-  email: String
   address: UserAddress
 }
 
 type User {
   id: String
+  email: String
   data: UserData
-  password: String
+  token: String
 }
 
 type Query {
   users: [User]
+  login(email: String, password: String): User
 }

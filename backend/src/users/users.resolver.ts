@@ -13,11 +13,17 @@ export class UsersResolver {
     return this.usersService.findAll()
   }
 
-  // @Query('login')
-  // async login(
-  //   @Args('email') email: string,
-  //   @Args('password') password: string
-  // ) {
-  //   console.log(email, password, this.plansService.findAll())
-  // }
+  @Query('login')
+  async login(
+    @Args('email') email: string,
+    @Args('password') password: string
+  ) {
+    const user = this.usersService.findByEmail(email)
+
+    if (password !== user.password) {
+      throw new Error('Invalid password!')
+    }
+
+    return this.usersService.getUserWithToken(user)
+  }
 }
