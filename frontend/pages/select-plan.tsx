@@ -4,16 +4,17 @@ import { useEffect, useState } from 'react'
 import { MealsPerWeek, possibleTimesPerWeek } from '../components/SelectPlan/MealsPerWeek';
 import { Continue } from '../components/SelectPlan/Continue';
 import { Plan } from '../components/SelectPlan/Plan';
-import { getPlans } from '../service/planService';
+import * as planService from '../service/planService';
 import { SelectPlanProps } from '../types/Plan';
 
+const { getPlans } = planService
 const calculateTotalCost = (availablePlans, planId, timesPerWeek) => {
   const plan = availablePlans.find((plan) => plan.id === planId)
 
   return timesPerWeek * plan.pricePerMeal
 }
 
-function SelectPlan (props: SelectPlanProps) {
+function SelectPlan ({availablePlans = []}: SelectPlanProps) {
   const router = useRouter()
   const [planId, setPlan] = useState(null)
   const [timesPerWeek, setTimesPerWeek] = useState(possibleTimesPerWeek[0])
@@ -25,7 +26,7 @@ function SelectPlan (props: SelectPlanProps) {
 
     if (planId !== null) {
       setTotalCost(
-        calculateTotalCost(props.availablePlans, planId, timesPerWeek)
+        calculateTotalCost(availablePlans, planId, timesPerWeek)
       )
     }
   }, [timesPerWeek])
@@ -39,7 +40,7 @@ function SelectPlan (props: SelectPlanProps) {
 
     if (planId !== null) {
       setTotalCost(
-        calculateTotalCost(props.availablePlans, planId, timesPerWeek)
+        calculateTotalCost(availablePlans, planId, timesPerWeek)
       )
     }
   }, [planId])
@@ -58,8 +59,9 @@ function SelectPlan (props: SelectPlanProps) {
       <section className="bg-white py-8 flex flex-col">
         <div className="container mx-auto flex items-center flex-wrap pt-4 pb-12 self-center">
           {
-            props.availablePlans.map((plan) => (
+            availablePlans.map((plan) => (
               <Plan
+                data-test={plan.name}
                 key={plan.name}
                 name={plan.name}
                 price={plan.pricePerMeal}

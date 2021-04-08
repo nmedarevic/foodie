@@ -6,5 +6,5 @@ export type Plan = {
 }
 
 export type SelectPlanProps = {
-  availablePlans: [Plan];
+  availablePlans: [] | [Plan];
 }

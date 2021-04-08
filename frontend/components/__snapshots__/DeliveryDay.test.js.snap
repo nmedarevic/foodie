@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders Delivery day with a selected day 1`] = `
+<section
+  className="bg-white py-8 flex"
+>
+  <div
+    className="container mx-auto flex items-center flex-wrap flex-col pt-4 pb-12 self-center"
+  >
+    <div
+      className="flex flex-col"
+    >
+      <h1
+        className="text-2xl"
+      >
+        Select first delivery day
+      </h1>
+      <div
+        className="flex"
+      >
+        <div
+          className="mt-5 mr-5 cursor-pointer nline-flex items-center px-6 py-3 text-black font-semibold shadow-sm bg-gray-200"
+          data-test="one"
+          onClick={[Function]}
+        >
+          one
+        </div>
+        <div
+          className="mt-5 mr-5 cursor-pointer nline-flex items-center px-6 py-3 text-white font-semibold shadow-sm bg-blue-500"
+          data-test="two"
+          onClick={[Function]}
+        >
+          two
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Renders Delivery day with basic props 1`] = `
+<section
+  className="bg-white py-8 flex"
+>
+  <div
+    className="container mx-auto flex items-center flex-wrap flex-col pt-4 pb-12 self-center"
+  >
+    <div
+      className="flex flex-col"
+    >
+      <h1
+        className="text-2xl"
+      >
+        Select first delivery day
+      </h1>
+      <div
+        className="flex"
+      >
+        <div
+          className="mt-5 mr-5 cursor-pointer nline-flex items-center px-6 py-3 text-white font-semibold shadow-sm bg-blue-500"
+          data-test="one"
+          onClick={[Function]}
+        >
+          one
+        </div>
+        <div
+          className="mt-5 mr-5 cursor-pointer nline-flex items-center px-6 py-3 text-black font-semibold shadow-sm bg-gray-200"
+          data-test="two"
+          onClick={[Function]}
+        >
+          two
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+`;
+
+exports[`Renders Delivery day without props 1`] = `
+<section
+  className="bg-white py-8 flex"
+>
+  <div
+    className="container mx-auto flex items-center flex-wrap flex-col pt-4 pb-12 self-center"
+  >
+    <div
+      className="flex flex-col"
+    >
+      <h1
+        className="text-2xl"
+      >
+        Select first delivery day
+      </h1>
+      <div
+        className="flex"
+      />
+    </div>
+  </div>
+</section>
+`;
