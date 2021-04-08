@@ -1,4 +1,4 @@
-import client from './apollo-client';
+import client from './apollo-nextjs-client';
 import { gql } from "@apollo/client";
 
 export const getRecipes = async (cookies): Promise<any> => {
