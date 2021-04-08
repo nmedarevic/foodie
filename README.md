@@ -19,3 +19,8 @@ A code challenge solution
 * Basic auth added for "recipes" endpoint
 * Secret added to the repo not via external config
 * Only one E2E test added. No unit tests
+
+# How to run
+While in root folder:
+* Run `npm run build`
+* After that run `npm run start`
