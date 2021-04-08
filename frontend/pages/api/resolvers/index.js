@@ -1,4 +1,4 @@
-import client from './../../../service/apollo-server-client'
+import client from './../../../service/apollo-client'
 import { gql } from "@apollo/client";
 
 export const resolvers = {

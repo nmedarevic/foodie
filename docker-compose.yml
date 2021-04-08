@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+  backend:
+    container_name: backend
+    build:
+      context: backend/
+    environment:
+      - LOCAL_NET=backend
+    ports:
+      - 8000:8000
+    networks:
+      - webnet
+    depends_on:
+      - frontend
+
+  frontend:
+    container_name: frontend
+    build:
+      context: frontend/
+    environment:
+      - LOCAL_NET=frontend
+    ports:
+      - 3000:3000
+    networks:
+      - webnet
+networks:
+  webnet:
+    driver: bridge

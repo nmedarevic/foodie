@@ -7,7 +7,7 @@ let plansCache = []
 export const submitPlan = async (props: SubmitPlanInput): Promise<string> => {
   const {data} = await client.mutate({
     mutation: gql`
-      mutation m{
+      mutation {
         submitPlan(plan:{
           user: {
             firstName: "${props.user.firstName}",
