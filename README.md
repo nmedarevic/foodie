@@ -7,9 +7,10 @@ A code challenge solution
 * Uses NextJS and Apollo client
 * Plan selection and plan submit
 * View available recipes
-* Tailwind used for speed. Styled component used only in one place
+* Tailwind used for initial development speed. Styled component used only in one place
 * Communicates with the server via GraphQl
-* Contains all plan selection data in cookies
+* Contains all plan selection process state in cookies
+* No unit tests
 
 # Backend
 * NestJS app
