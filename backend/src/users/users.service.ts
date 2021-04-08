@@ -9,7 +9,6 @@ export class StoredUser extends User {
 }
 
 @Injectable()
-@Injectable()
 export class UsersService {
   private users: Array<StoredUser> = []
 

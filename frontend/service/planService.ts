@@ -1,4 +1,5 @@
 import client from './apollo-client';
+import serverClient from './apollo-nextjs-client';
 import { gql } from "@apollo/client";
 import { SubmitPlanInput } from '../types/Summary';
 
@@ -39,7 +40,7 @@ export const getPlans = async () => {
     return plansCache
   }
 
-  const {data} = await client.query({
+  const {data} = await serverClient.query({
     query: gql`
       query {
         plans {

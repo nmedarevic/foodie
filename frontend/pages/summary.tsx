@@ -12,6 +12,7 @@ function Summary (props: SumaryProps) {
 
   const onContinue = async () => {
     const {data} = props
+
     const params: SubmitPlanInput = {
       user: {
         firstName: data.firstName,
@@ -62,10 +63,9 @@ export default Summary
 
 export async function getServerSideProps({req}) {
   const plans = await getPlans()
-  console.log(plans)
   const parsedCookies = cookie.parse(req.headers.cookie)
   const summary = getSummary(parsedCookies, plans)
-  console.log(summary)
+
   return {
     props: {
       summary,

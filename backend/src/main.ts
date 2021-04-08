@@ -6,6 +6,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   app.use(cookieParser())
   console.warn('App will start on localhost:8000')
-  await app.listen(8000, 'backend')
+  await app.listen(8000)
 }
 bootstrap()

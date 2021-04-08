@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "docker:run": "docker build -t frontend . && docker run -p 3000:3000 -p 8000:8000 -t frontend"
   },
   "dependencies": {
     "@apollo/client": "^3.3.13",
